@@ -75,7 +75,7 @@ def test_api_valid_type(api_client):
     res = api_client.get()
     assert res.json()['media_type'] in ('image', 'video')
 
-@pytest.mark.skip
+
 def test_api_image_opens(api_client):
     res = api_client.get()
     url = res.json()['url']
@@ -90,7 +90,6 @@ def test_api_image_opens(api_client):
         return True
 
 
-@pytest.mark.skip
 def test_api_image_url_hdurl_are_the_same(api_client):
     res = api_client.get()
     try:
