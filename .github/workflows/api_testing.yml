@@ -22,16 +22,15 @@ jobs:
         python-version: 3.9
     - name: Install dependencies
       run: pip install -r requirements.txt
-    - name: Run TestProject Agent
-      env:
-        TP_API_KEY: ${{ secrets.TP_API_KEY }}
-      run: |
-        envsubst < .github/CI/docker-compose.yml > docker-compose.yml
-        docker-compose -f docker-compose.yml up -d
-    - name: Wait for Agent to Register
-      run: bash .github/CI/wait_for_agent.sh
+#    - name: Run TestProject Agent
+#      env:
+#        TP_API_KEY: ${{ secrets.TP_API_KEY }}
+#      run: |
+#        envsubst < .github/CI/docker-compose.yml > docker-compose.yml
+#        docker-compose -f docker-compose.yml up -d
+#    - name: Wait for Agent to Register
+#      run: bash .github/CI/wait_for_agent.sh
     - name: Test with pytest
-#      run: coverage run tests/test_main_page.py tests/test_product_page.py
       run: pytest 
       env:
         TP_DEV_TOKEN: ${{ secrets.TP_DEV_TOKEN }}
